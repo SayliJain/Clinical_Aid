@@ -42,8 +42,15 @@ with col1:
     st.header("Instructions")
     st.write("Please enter the patient history in the following format:")
     st.markdown("""
-    Analyze a Patient Summary
-    Include age, sex, relevant past medical history, medications, presenting symptoms, associated symptoms, descriptions of relevant studies (including labs and imaging), the illness course and any additional information you might include when consulting another physician about your patient.
+    1. **Age**
+    2. **Sex**
+    3. **Relevant Past Medical History**
+    4. **Medications**
+    5. **Presenting Symptoms**
+    6. **Associated Symptoms**
+    7. **Descriptions of Relevant Studies (including labs and imaging)**
+    8. **The Illness Course**
+    9. **Any Additional Information You Might Include When Consulting Another Physician About Your Patient**
     """)
 
 with col2:

@@ -1,8 +1,9 @@
+import os
 import streamlit as st
 import openai
 import asyncio
 import aiohttp
-import os
+
 # Set your OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -18,7 +19,7 @@ async def generate_response(session, prompt):
             json={
                 "model": "gpt-4",
                 "messages": [
-                    {"role": "system", "content": "You are an AI medical consultant for medical professionals with extensive knowledge and expertise in clinical medicine. Your role is to provide detailed and accurate analysis, diagnosis, and management recommendations for complex patient cases."},
+                    {"role": "system", "content": "You are an AI medical consultant for medical professionals with extensive knowledge and expertise in clinical medicine. Your role is to provide detailed and accurate analysis, diagnosis, and management recommendations for patient cases. You will be presented with a comprehensive patient case description, including the following information: Analyze a Patient Summary. Include age, sex, relevant past medical history, medications, presenting symptoms, associated symptoms, descriptions of relevant studies (including labs and imaging), the illness course and any additional information you might include when consulting another physician about your patient."},
                     {"role": "user", "content": prompt}
                 ],
                 "max_tokens": 1500,
@@ -70,27 +71,27 @@ if st.button("Generate Clinical Analysis"):
             "clinical_problem_representation": f"""
             Clinical Problem Representation:
             {patient_history}
-            Provide a concise summary of the key clinical issues, findings, and diagnostic challenges presented in the case. Ensure the response integrates the patient's history, symptoms, physical examination, and test results.
+            Provide a concise summary of the key clinical issues, and findings presented in the case. 
             """,
             "most_likely_diagnosis": f"""
             Most Likely Diagnosis:
             {patient_history}
-            Provide your primary most likely diagnostic hypothesis, supported by a detailed explanation that integrates the patient's history, symptoms, physical examination, and test results. Include any relevant pathophysiological mechanisms, epidemiological factors, or diagnostic criteria that support your diagnosis.
+            Provide your primary most likely diagnostic hypothesis, supported by a detailed explanation that integrates the patient's history, symptoms, physical examination, and test results. Include any relevant pathophysiological mechanisms, epidemiological factors, or diagnostic criteria that support your diagnosis. 
             """,
             "expanded_differential_diagnosis": f"""
             Expanded Differential Diagnosis:
             {patient_history}
-            Provide a comprehensive list of differential diagnoses that should be considered, along with brief explanations for their inclusion in the differential. Evaluate the relative likelihood of each differential diagnosis based on the available information.
+            Provide a comprehensive list of differential diagnoses that should be considered, along with brief explanations for their inclusion in the differential. Evaluate the relative likelihood of each differential diagnosis based on the available information. 
             """,
             "alternative_diagnosis": f"""
             Alternative Diagnosis:
             {patient_history}
-            Provide a comprehensive list of alternative diagnoses that should be considered, along with brief explanations for their inclusion in alternative. Evaluate the relative likelihood of each alternative diagnosis based on the available information.
+            Provide a comprehensive list of alternative diagnoses that should be considered, along with brief explanations. Evaluate the relative likelihood of each alternative diagnosis based on the available information.
             """,
             "clinical_assessment": f"""
             Clinical Assessment:
             {patient_history}
-            List specific diagnostic tests, procedures, or imaging studies that you recommend to confirm or rule out the suspected diagnosis, as well as any additional tests needed to evaluate the differential diagnoses or address any remaining diagnostic uncertainties.
+            List specific diagnostic tests, procedures, or imaging studies that you recommend to confirm or rule out the suspected diagnosis, as well as any additional tests needed to evaluate the differential diagnoses or address any remaining diagnostic uncertainties. 
             """,
             "clinical_treatment_plan": f"""
             Clinical Treatment Plan:
@@ -101,7 +102,11 @@ if st.button("Generate Clinical Analysis"):
             Monitoring and Follow-Up:
             {patient_history}
             Provide comprehensive guidelines for monitoring the patient's response to treatment, potential complications or adverse effects to watch for, and recommended follow-up plans, including any necessary specialist referrals or additional testing.
-            """
+            """,
+            "references": f"""
+            References:
+            {patient_history}
+            Create a list of valid links from medical journals, articles, scientific, and clinical evidences used to create the output. 
         }
 
         async def main():
@@ -122,7 +127,8 @@ if st.button("Generate Clinical Analysis"):
             "Alternative Diagnosis", 
             "Clinical Assessment", 
             "Clinical Treatment Plan", 
-            "Monitoring and Follow-Up"
+            "Monitoring and Follow-Up",
+            "References"
         ])
 
         with tabs[0]:
@@ -152,5 +158,9 @@ if st.button("Generate Clinical Analysis"):
         with tabs[6]:
             st.subheader("Monitoring and Follow-Up")
             st.write(responses['monitoring_and_follow_up'])
+
+        with tabs[7]:
+            st.subheader("References")
+            st.write(responses['references'])
     else:
         st.error("Please enter the patient history.")

@@ -73,7 +73,7 @@ if st.button("Generate Clinical Analysis"):
             "most_likely_diagnosis": f"""
             Most Likely Diagnosis:
             {patient_history}
-            Provide your primary most likely diagnostic hypothesis, supported by a detailed explanation that integrates the patient's history, symptoms, physical examination, and test results. Include any relevant pathophysiological mechanisms, epidemiological factors, or diagnostic criteria that support your diagnosis. (100-200 words)
+            Provide your most likely diagnostic hypothesis, supported by a detailed explanation that integrates the patient's history, symptoms, physical examination, and test results. Include any relevant pathophysiological mechanisms, epidemiological factors, or diagnostic criteria that support your diagnosis. (100-200 words)
             """,
             "expanded_differential_diagnosis": f"""
             Expanded Differential Diagnosis:

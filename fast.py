@@ -42,18 +42,8 @@ with col1:
     st.header("Instructions")
     st.write("Please enter the patient history in the following format:")
     st.markdown("""
-    - **Chief Concern**
-    - **HPI (History of Present Illness)**
-    - **ROS (Review of Systems)**
-    - **PMHx (Past Medical History)**
-    - **PSurgHx (Past Surgical History)**
-    - **FHx (Family History)**
-    - **SocHx (Social History)**
-    - **HRB (Health Risk Behaviors)**
-    - **Meds (Medications)**
-    - **Allergies**
-    - **Exam** 
-    - **Lab Results**
+    Analyze a Patient Summary
+    Include age, sex, relevant past medical history, medications, presenting symptoms, associated symptoms, descriptions of relevant studies (including labs and imaging), the illness course and any additional information you might include when consulting another physician about your patient.
     """)
 
 with col2:
@@ -71,32 +61,32 @@ if st.button("Generate Clinical Analysis"):
             "clinical_problem_representation": f"""
             Clinical Problem Representation:
             {patient_history}
-            Provide a concise summary of the key clinical issues, and findings presented in the case. 
+            Provide a concise summary of the key clinical issues, and findings presented in the case. (100-200 words)
             """,
             "most_likely_diagnosis": f"""
             Most Likely Diagnosis:
             {patient_history}
-            Provide your primary most likely diagnostic hypothesis, supported by a detailed explanation that integrates the patient's history, symptoms, physical examination, and test results. Include any relevant pathophysiological mechanisms, epidemiological factors, or diagnostic criteria that support your diagnosis. 
+            Provide your primary most likely diagnostic hypothesis, supported by a detailed explanation that integrates the patient's history, symptoms, physical examination, and test results. Include any relevant pathophysiological mechanisms, epidemiological factors, or diagnostic criteria that support your diagnosis. (100-200 words)
             """,
             "expanded_differential_diagnosis": f"""
             Expanded Differential Diagnosis:
             {patient_history}
-            Provide a comprehensive list of differential diagnoses that should be considered, along with brief explanations for their inclusion in the differential. Evaluate the relative likelihood of each differential diagnosis based on the available information. 
+            Provide a comprehensive list of differential diagnoses that should be considered, along with brief explanations for their inclusion in the differential. Evaluate the relative likelihood of each differential diagnosis based on the available information. (100-200 words)
             """,
             "alternative_diagnosis": f"""
             Alternative Diagnosis:
             {patient_history}
-            Provide a comprehensive list of alternative diagnoses that should be considered, along with brief explanations. Evaluate the relative likelihood of each alternative diagnosis based on the available information.
+            Provide a comprehensive list of alternative diagnoses that should be considered, along with brief explanations. Evaluate the relative likelihood of each alternative diagnosis based on the available information. (100-200 words)
             """,
             "clinical_assessment": f"""
             Clinical Assessment:
             {patient_history}
-            List specific diagnostic tests, procedures, or imaging studies that you recommend to confirm or rule out the suspected diagnosis, as well as any additional tests needed to evaluate the differential diagnoses or address any remaining diagnostic uncertainties. 
+            List specific diagnostic tests, procedures, or imaging studies that you recommend to confirm or rule out the suspected diagnosis, as well as any additional tests needed to evaluate the differential diagnoses or address any remaining diagnostic uncertainties. (100-400 words)
             """,
             "clinical_treatment_plan": f"""
             Clinical Treatment Plan:
             {patient_history}
-            You are a highly experienced clinician. Based on the detailed patient case provided below, create an elaborate clinical treatment plan that addresses the patient's condition comprehensively. Your response should include the most likely diagnosis, a thorough analysis of the patient's symptoms, a step-by-step treatment plan, and any necessary follow-up actions. Ensure the response is detailed and at least 400 words.
+            You are a highly experienced clinician. Based on the detailed patient case provided below, create an elaborate clinical treatment plan that addresses the patient's condition comprehensively. Your response should include the most likely diagnosis, a thorough analysis of the patient's symptoms, a step-by-step treatment plan, and any necessary follow-up actions. Ensure the response is detailed and at least 400 words. (350-400 words)
             """,
             "monitoring_and_follow_up": f"""
             Monitoring and Follow-Up:
@@ -106,7 +96,7 @@ if st.button("Generate Clinical Analysis"):
             "references": f"""
             References:
             {patient_history}
-            Create a list of valid links from medical journals, articles, scientific, and clinical evidences used to create the output. 
+            Create a list of valid links from medical journals, articles, scientific, and clinical evidences used to create the output. (50-150 words)
             """
         }
 

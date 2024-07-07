@@ -107,6 +107,7 @@ if st.button("Generate Clinical Analysis"):
             References:
             {patient_history}
             Create a list of valid links from medical journals, articles, scientific, and clinical evidences used to create the output. 
+            """
         }
 
         async def main():
